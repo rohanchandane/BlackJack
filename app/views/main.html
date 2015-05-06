@@ -1,0 +1,61 @@
+<div>
+    <button type="button" class="btn btn-primary center-block" ng-click="startDeal()" ng-hide="isDealOn">Start Deal</button>
+    <button type="button" class="btn btn-info center-block" ng-click="init()" ng-show="isDealOn">Reset Deal</button>
+
+</div>
+
+<div class="game-container">
+
+    <div ng-show="winnerName" class="block-center game-container-block winner-text">
+        <span class="winner-title">Winner</span>
+        <br>
+        <span class="winner-name">{{ winnerName }}</span>
+    </div>
+
+    <div class="game-container-block" ng-class="winnerName? 'block-winner':''" >
+        <div class="panel-group playing-box" ng-show="dealerCards.length > 0">
+            <div class="panel panel-default">
+                <div class="panel-heading accordion-toggle pointer">
+                    <h4 class="panel-title">
+                        <i class="fa fa-user"></i>&nbsp;&nbsp;Dealer
+                    </h4>
+                </div>
+                <div id="dealerCollapsePanel" class="panel-collapse collapse in accordian-body">
+                    <div class="panel-body">
+
+                        <div ng-repeat="dealerCard in dealerCards track by $index" class="cards {{dealerCard.style}}" ></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-group playing-box" ng-show="playerCards.length > 0">
+            <div class="panel panel-default">
+                <div class="panel-heading accordion-toggle pointer">
+                    <h4 class="panel-title">
+                        <i class="fa fa-user"></i>&nbsp;&nbsp;You
+                    </h4>
+
+                </div>
+                <div class="panel-collapse collapse in accordian-body">
+                    <div class="panel-body">
+
+                        <div class="cards" ng-repeat="playerCard in playerCards track by $index" ng-class="playerCard.style"></div>
+
+                        <br>
+
+                        <div class="block-center">
+                            <button type="button" class="btn btn-success" ng-click="drawCardForPlayer()" ng-hide="winnerName">Hit</button>
+                            <button type="button" class="btn btn-success" ng-click="drawCardForDealer()" ng-hide="winnerName">Stick</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
